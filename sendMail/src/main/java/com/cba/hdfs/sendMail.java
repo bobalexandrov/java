@@ -15,7 +15,7 @@ public class sendMail {
 	public static void main(String[] args) {
 
 		final String username = "info@custom-built-apps.com";
-		final String password = "yourPassworkd";
+		final String password = "bA12624120!";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -31,17 +31,14 @@ public class sendMail {
 		  });
 
 		try {
-			String ipAddress=args[0];
+			String theMessage=args[0];
+			String theSubject=args[1];
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("info@custom-built-apps.com"));
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse("boris.alexandrov@hotmail.ca"));
-			message.setSubject("IP address change");
-			message.setText("Dear Mr. Alexandrov,"
-				+ "\n\n Please, be advised that your IP address is "
-				+ ipAddress
-				+ "\n\n Regards,"
-				+ "Your IP monitor application");
+			message.setSubject(theSubject);
+			message.setText(theMessage);
 
 			Transport.send(message);
 
