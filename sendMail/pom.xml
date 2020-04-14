@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cba.hdfs</groupId>
+  <artifactId>sendMail</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>sendMail</name>
+  <distributionManagement>
+    <repository>
+        <id>nexus</id>
+        <name>maven-releases</name>
+        <url>http://192.168.2.22:8081/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+        <id>nexus</id>
+        <name>maven-snapshots</name>
+        <url>http://192.168.2.22:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+   </distributionManagement>
+  <repositories>
+   <repository>
+      <id>cloudera</id>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+    </repository>
+  </repositories>
+  <dependencies>
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>1.6.2</version>
+            </dependency>
+	   <dependency>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>1.1</version>
+	   </dependency>
+	    <dependency>
+		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-client</artifactId>
+            <version>3.0.0-cdh6.3.2</version>
+ 	</dependency>
+
+  </dependencies>
+<build>
+<plugins>
+ <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.1.2</version>
+            <configuration>
+              <archive>
+                <manifest>
+                  <addClasspath>true</addClasspath>
+                  <mainClass>com.cba.hdfs.sendMail</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+          </plugin>
+    </plugins>
+  </build>
+
+</project>
